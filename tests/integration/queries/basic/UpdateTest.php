@@ -1,10 +1,9 @@
 <?php
 
-namespace integration\queries;
+namespace integration\queries\basic;
 
 use data\ConnectionProvider;
 use PHPUnit\Framework\TestCase;
-use Stormmore\Queries\StormQueries;
 
 final class UpdateTest extends TestCase
 {

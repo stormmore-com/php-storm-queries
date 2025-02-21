@@ -19,7 +19,8 @@ have possibility to build queries easily and retrieve in hierarchical way.
 
 <a name="index"></a>
 * [1. Quick start](#quickstart)
-* [2. Select query](#selectquery)
+* [2. Basic Queries](#basicqueries)
+* [2. Select Query](#selectquery)
   * [Aggregation functions](#aggregatefunctions)
   * [Join/Left join](#leftjoin)
   * [Where](#where)
@@ -27,11 +28,11 @@ have possibility to build queries easily and retrieve in hierarchical way.
   * [GroupBy](#groupby)
   * [Having](#having)
 * [3. ORM](#orm)
-* [4. Sub queries](#subquery)
+* [4. SubQueries](#subquery)
 * [5. Assembling query](#assemblingquery)
-* [6. Insert query](#insertquery)
-* [7. Update query](#updatequery)
-* [8. Delete query](#deletequery)
+* [6. Insert Query](#insertquery)
+* [7. Update Query](#updatequery)
+* [8. Delete Query](#deletequery)
 * [9. Profiling nad logging queries](#profiling)
 * [10. Notice](#notice)
 * [11. Tests](#tests)
@@ -60,7 +61,9 @@ use Stormmore\Queries\StormQueries;
 $connection = ConnectionFactory::createFromstring("dsn", "user", "password");
 $queries = new StormQueries($connection);
 ```
-### Basic queries
+
+<a name="basicqueries"></a>
+## Basic queries
 Finding product by id
 ```php
 $product = $queries->find('products', 'id = ?', 5);
@@ -165,7 +168,7 @@ foreach($customers as $customer) {
 ```
 
 <a name="selectquery"></a>
-## Select query
+## Select Query
 
 Build select query with `select` method
 Build it with fluent API
