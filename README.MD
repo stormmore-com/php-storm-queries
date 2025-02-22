@@ -345,7 +345,7 @@ $orders = $queries
     'order_id' => 'id',
     'order_date' => 'date'
   ]))
-  ->leftJoin('shippers sh', 'sh.shipper_id', 'o.shipper_id', Map::one('shipper', [
+  ->leftJoin('shippers sh', 'sh.shipper_id = o.shipper_id', Map::one('shipper', [
           'shipper_id' => 'id',
           'shipper_name' => 'name'
   ]))
@@ -366,8 +366,8 @@ $products = $this->queries
       's.supplier_name' => 'supplierName',
       'c.category_name' => 'categoryName',
   ]))
-  ->leftJoin('categories c', 'c.category_id', 'p.category_id')
-  ->leftJoin('suppliers s', 's.supplier_id', 'p.supplier_id')
+  ->leftJoin('categories c', 'c.category_id = p.category_id')
+  ->leftJoin('suppliers s', 's.supplier_id = p.supplier_id')
   ->findAll();
 
 foreach($products as $product) {
@@ -382,7 +382,7 @@ $queries
       'customer_id' => 'id',
       'customer_name' => 'name'
   ]))
-  ->leftJoin('orders o', 'o.customer_id', 'c.customer_id', Map::many("orders", [
+  ->leftJoin('orders o', 'o.customer_id = c.customer_id', Map::many("orders", [
           'order_id' => 'id'
   ]))
 ```
@@ -393,8 +393,8 @@ $queries
       'product_id' => 'id',
       'product_name' => 'name'
   ]))
-  ->leftJoin('products_tags pt', 'pt.product_id', 'p.product_id', Map::join())
-  ->leftJoin('tags t', 't.tag_id', 'pt.tag_id', Map::many("tags", [
+  ->leftJoin('products_tags pt', 'pt.product_id = p.product_id', Map::join())
+  ->leftJoin('tags t', 't.tag_id = pt.tag_id', Map::many("tags", [
       'tag_id' => 'id',
       'name' => 'name'
   ]))
@@ -421,7 +421,7 @@ $queries
     SubQuery::create($queries->from('products'), 'p')
 )
 ->leftJoin(
-    SubQuery::create($queries->from('suppliers'), 's'), 's.supplier_id', 'p.supplier_id')
+    SubQuery::create($queries->from('suppliers'), 's'), 's.supplier_id = p.supplier_id')
 )
 ->findAll();
 ```
@@ -449,7 +449,7 @@ Using joins requires using aliases in `from` and `join` clause.
 ```php 
 $query = $queries
     ->select('products')
-    ->join('product_photos', 'product_photos.product_id', 'products.id')
+    ->join('product_photos', 'product_photos.product_id = products.id')
     ->where('is_in_sale', true);
 if ($criteria->hasCategory()) {
     $query->where('category_id', $criteria->getCategoryId());
