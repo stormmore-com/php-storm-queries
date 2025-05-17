@@ -1,0 +1,14 @@
+composer.lock
+.gitignore export-ignore
+.gitattributes export-ignore
+README.md export-ignore
+docker-compose export-ignore
+
+/tests export-ignore
+
+run.all.cmd export-ignore
+run.mariadb.cmd export-ignore
+run.mysql.cmd export-ignore
+run.postgres.cmd export-ignore
+run.sqlite.cmd export-ignore
+run.sqlserver.cmd export-ignore
