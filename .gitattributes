@@ -1,6 +1,6 @@
 .gitignore export-ignore
 .gitattributes export-ignore
-/composer.lock
+composer.lock export-ignore
 README.md export-ignore
 docker-compose export-ignore
 
