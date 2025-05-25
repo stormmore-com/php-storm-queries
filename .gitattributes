@@ -1,9 +1,10 @@
+.idea export-ignore
 .gitignore export-ignore
 .gitattributes export-ignore
 composer.lock export-ignore
-README.md export-ignore
+README.MD export-ignore
 LICENSE export-ignore
-docker-compose export-ignore
+docker-compose.yml export-ignore
 
 /tests export-ignore
 
